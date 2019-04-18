@@ -1,16 +1,35 @@
 package com.use3w.mng.dao;
 
 import com.use3w.mng.model.Client;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public interface ClientDao {
+@Repository
+public class ClientDao {
 
-    void save(Client client);
+    @PersistenceContext
+    private EntityManager em;
 
-    Client findOne(String clientCPF);
 
-    List<Client> findAll();
+    public void save(Client client) {
+        em.persist(client);
+    }
 
-    void delete(String clientCPF);
+    public Client findOne(String clientCPF) {
+        return em.find(Client.class, clientCPF);
+    }
+
+
+    public List<Client> findAll() {
+        return em.createQuery("select c from Client c", Client.class).getResultList();
+    }
+
+    public void delete(String clientCPF) {
+        em.remove(findOne(clientCPF));
+    }
+
+
 }

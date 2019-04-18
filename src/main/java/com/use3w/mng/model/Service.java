@@ -3,10 +3,12 @@ package com.use3w.mng.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
+
 
 @Entity
 public class Service {
@@ -21,7 +23,8 @@ public class Service {
     private LocalDateTime serviceDateStart;
     private LocalDateTime serviceDateEnd;
     private String serviceStatus;
-    private Employee employee;
+//    @ManyToMany
+//    private Employee employee;
 
     /**
      * @deprecated hibernate only
@@ -107,11 +110,11 @@ public class Service {
         this.serviceStatus = serviceStatus;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
+//    public Employee getEmployee() {
+//        return employee;
+//    }
+//
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
 }

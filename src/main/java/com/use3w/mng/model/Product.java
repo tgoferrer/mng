@@ -2,11 +2,11 @@ package com.use3w.mng.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.function.Supplier;
+
 
 @Entity
 public class Product {
@@ -21,7 +21,9 @@ public class Product {
     private String productStatus;
     private int productUnitInStock = 0;
     private String productManufacturer;
-    private Supplier supplier;
+
+//    @ManyToMany
+//    private Supplier supplier;
 
     /**
      * @deprecated hibernate only
@@ -99,11 +101,11 @@ public class Product {
         this.productManufacturer = productManufacturer;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
+//    public Supplier getSupplier() {
+//        return supplier;
+//    }
+//
+//    public void setSupplier(Supplier supplier) {
+//        this.supplier = supplier;
+//    }
 }
