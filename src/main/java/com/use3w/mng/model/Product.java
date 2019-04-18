@@ -1,11 +1,9 @@
 package com.use3w.mng.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 
 @Entity
@@ -22,8 +20,8 @@ public class Product {
     private int productUnitInStock = 0;
     private String productManufacturer;
 
-//    @ManyToMany
-//    private Supplier supplier;
+    @OneToMany
+    private List<Supplier> productSuppliers;
 
     /**
      * @deprecated hibernate only
@@ -101,11 +99,11 @@ public class Product {
         this.productManufacturer = productManufacturer;
     }
 
-//    public Supplier getSupplier() {
-//        return supplier;
-//    }
-//
-//    public void setSupplier(Supplier supplier) {
-//        this.supplier = supplier;
-//    }
+    public List<Supplier> getProductSuppliers() {
+        return productSuppliers;
+    }
+
+    public void setProductSuppliers(List<Supplier> productSuppliers) {
+        this.productSuppliers = productSuppliers;
+    }
 }

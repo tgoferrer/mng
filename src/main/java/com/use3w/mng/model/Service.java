@@ -1,13 +1,14 @@
 package com.use3w.mng.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import com.sun.mail.util.LineInputStream;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -23,8 +24,8 @@ public class Service {
     private LocalDateTime serviceDateStart;
     private LocalDateTime serviceDateEnd;
     private String serviceStatus;
-//    @ManyToMany
-//    private Employee employee;
+    @OneToMany
+    private List<Employee> employeesList = new ArrayList<>();
 
     /**
      * @deprecated hibernate only
@@ -110,11 +111,11 @@ public class Service {
         this.serviceStatus = serviceStatus;
     }
 
-//    public Employee getEmployee() {
-//        return employee;
-//    }
-//
-//    public void setEmployee(Employee employee) {
-//        this.employee = employee;
-//    }
+    public List<Employee> getEmployeesList() {
+        return employeesList;
+    }
+
+    public void setEmployeesList(List<Employee> employeesList) {
+        this.employeesList = employeesList;
+    }
 }

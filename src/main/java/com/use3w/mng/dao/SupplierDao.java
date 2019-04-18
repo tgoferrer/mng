@@ -19,8 +19,8 @@ public class SupplierDao {
         em.persist(supplier);
     }
 
-    public Supplier findOne(String supplierCNPJ) {
-        return em.find(Supplier.class, supplierCNPJ);
+    public Supplier findOne(Integer supplierId) {
+        return em.find(Supplier.class, supplierId);
     }
 
 
@@ -28,7 +28,7 @@ public class SupplierDao {
         return em.createQuery("select sp from Supplier sp", Supplier.class).getResultList();
     }
 
-    public void delete(String supplierCNPJ) {
-        em.remove(findOne(supplierCNPJ));
+    public void delete(Integer supplierId) {
+        em.remove(findOne(supplierId));
     }
 }

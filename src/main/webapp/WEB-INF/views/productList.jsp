@@ -134,7 +134,7 @@ To change this template use File | Settings | File Templates.
                     <td>${product.productManufacturer}</td>
                     <td>${product.productStatus}</td>
                     <td><center>
-                      <a class="fas fa-fw fa-file-invoice" href="<spring:url value="/productList/productView/${product.productId}-${product.supplierId}"/>"/>
+                      <a class="fas fa-fw fa-file-invoice" href="<spring:url value="/productList/productView/${product.productId}-${product.supplier.supplierId}"/>"/>
                       <a class="fas fa-fw fa-edit"/>
                       <a class="fas fa-fw fa-trash" data-toggle="modal" data-target="#productDelete" href=""></a>
                         <!-- Modal Product Delete Import-->

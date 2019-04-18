@@ -1,5 +1,7 @@
 package com.use3w.mng.model;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,9 +10,10 @@ import javax.persistence.Id;
 public class Supplier {
 
     @Id
-    private String supplierCNPJ;
     @GeneratedValue
-    private int supplierInternalCode;
+    private Integer supplierId;
+    @CNPJ
+    private String supplierCNPJ;
     private String supplierName;
     private String supplierAddress;
     private String supplierCPE;
@@ -23,8 +26,9 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String supplierCNPJ, String supplierName, String supplierEmail) {
+    public Supplier(String supplierCNPJ, Integer supplierId,String supplierName, String supplierEmail) {
         this.supplierCNPJ = supplierCNPJ;
+        this.supplierId = supplierId;
         this.supplierName = supplierName;
         this.supplierEmail = supplierEmail;
     }
@@ -37,12 +41,12 @@ public class Supplier {
         this.supplierCNPJ = supplierCNPJ;
     }
 
-    public int getSupplierInternalCode() {
-        return supplierInternalCode;
+    public int getSupplierId() {
+        return supplierId;
     }
 
-    public void setSupplierInternalCode(int supplierInternalCode) {
-        this.supplierInternalCode = supplierInternalCode;
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getSupplierName() {

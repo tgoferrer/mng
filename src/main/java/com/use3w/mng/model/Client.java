@@ -1,12 +1,21 @@
 package com.use3w.mng.model;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Client {
 
     @Id
+    @GeneratedValue
+    private Integer clientId;
+    @CPF
     private String clientCPF;
     private String clientName;
     private String clientAddress1;
@@ -14,6 +23,8 @@ public class Client {
     private String clientCPE;
     private String clientPhone;
     private String clientEmail;
+    @OneToMany
+    private List<Product> productsComprados = new ArrayList<>();
 
     /**
      * @deprecated hibernate only
@@ -55,6 +66,14 @@ public class Client {
         return clientAddress2;
     }
 
+    public Integer getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
+    }
+
     public void setClientAddress2(String clientAddress2) {
         this.clientAddress2 = clientAddress2;
     }
@@ -81,5 +100,13 @@ public class Client {
 
     public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
+    }
+
+    public List<Product> getProductsComprados() {
+        return productsComprados;
+    }
+
+    public void setProductsComprados(List<Product> productsComprados) {
+        this.productsComprados = productsComprados;
     }
 }
