@@ -1,47 +1,33 @@
-package com.use3w.mng.model;
+package com.use3w.mng.model.form;
 
 import com.use3w.mng.dao.SupplierDao;
-import com.use3w.mng.model.form.ProductForm;
+import com.use3w.mng.model.Product;
+import com.use3w.mng.model.Supplier;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
+public class ProductForm {
 
-@Entity
-public class Product {
-
-    @Id
-    @GeneratedValue
+    private Integer productFormId;
     private Integer productId;
+    @NotEmpty(message = "Por favor, digite um nome para o produto que deseja adicionar")
     private String productName;
     private String productCategory;
     private String productDescription;
     private BigDecimal productPrice = BigDecimal.ZERO;
-    private boolean productAvailable;
+    private boolean productAvailable = false;
     private int productUnitInStock = 0;
     private String productManufacturer;
-    @ManyToOne
-    private Supplier productSupplier;
+    private Integer supplierId;
 
-    /**
-     * @deprecated hibernate only
-     */
-    public Product() {
+    public Integer getProductFormId() {
+        return productFormId;
     }
 
-    public Product(String productName, String productCategory, String productDescription, BigDecimal productPrice, boolean productAvailable, int productUnitInStock, String productManufacturer, Supplier productSupplier) {
-        this.productName = productName;
-        this.productCategory = productCategory;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.productAvailable = productAvailable;
-        this.productUnitInStock = productUnitInStock;
-        this.productManufacturer = productManufacturer;
-        this.productSupplier = productSupplier;
+    public void setProductFormId(Integer productFormId) {
+        this.productFormId = productFormId;
     }
 
     public Integer getProductId() {
@@ -77,11 +63,19 @@ public class Product {
     }
 
     public BigDecimal getProductPrice() {
-        return productPrice.setScale(2, RoundingMode.HALF_UP);
+        return productPrice;
     }
 
     public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public boolean isProductAvailable() {
+        return productAvailable;
+    }
+
+    public void setProductAvailable(boolean productAvailable) {
+        this.productAvailable = productAvailable;
     }
 
     public int getProductUnitInStock() {
@@ -100,20 +94,24 @@ public class Product {
         this.productManufacturer = productManufacturer;
     }
 
-    public Supplier getProductSupplier() {
-        return productSupplier;
+    public Integer getSupplierId() {
+        return supplierId;
     }
 
-    public void setProductSupplier(Supplier productSupplier) {
-        this.productSupplier = productSupplier;
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 
-    public boolean isProductAvailable() {
-        return productAvailable;
-    }
+    public Product toProduct(SupplierDao supplierDao) {
 
-    public void setProductAvailable(boolean productAvailable) {
-        this.productAvailable = productAvailable;
+
+        Supplier supplier = supplierDao.findOne(supplierId);
+
+        Product product = new Product(this.productName, this.productCategory, this.productDescription, this.productPrice, this.productAvailable, this.productUnitInStock, this.productManufacturer, supplier);
+
+        product.setProductId(productFormId);
+
+        return product;
     }
 
 

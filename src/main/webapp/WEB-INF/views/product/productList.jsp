@@ -37,7 +37,7 @@ To change this template use File | Settings | File Templates.
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <c:import url="template/sidebar.jsp"/>
+    <c:import url="../template/sidebar.jsp"/>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -45,7 +45,7 @@ To change this template use File | Settings | File Templates.
       <!-- Main Content -->
       <div id="content">
 
-        <c:import url="template/topbar.jsp"/>
+        <c:import url="../template/topbar.jsp"/>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -121,7 +121,7 @@ To change this template use File | Settings | File Templates.
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Fabricante</th>
-                    <th>Status</th>
+                    <%--<th>Status</th>--%>
                     <th>Ação</th>
                   </tr>
                   </thead>
@@ -132,13 +132,13 @@ To change this template use File | Settings | File Templates.
                     <td>${product.productName}</td>
                     <td>${product.productDescription}</td>
                     <td>${product.productManufacturer}</td>
-                    <td>${product.productStatus}</td>
+                    <%--<td>${product.productStatus}</td>--%>
                     <td><center>
-                      <a class="fas fa-fw fa-file-invoice" href="<spring:url value="/productList/productView/${product.productId}-${product.supplier.supplierId}"/>"/>
+                      <a class="fas fa-fw fa-file-invoice" href="<spring:url value="/product/productList/productView/${product.productId}"/>"/>
                       <a class="fas fa-fw fa-edit"/>
-                      <a class="fas fa-fw fa-trash" data-toggle="modal" data-target="#productDelete" href=""></a>
+                      <a class="fas fa-fw fa-trash" data-toggle="modal" data-target="#productDelete" href="/productList/productView/${product.productId}/delete"></a>
                         <!-- Modal Product Delete Import-->
-                        <c:import url="template/productDeleteConfirmationModal.jsp"/>
+                        <c:import url="../template/productDeleteConfirmationModal.jsp"/>
                       </center></td>
                     </c:forEach>
                   </tbody>
@@ -160,7 +160,7 @@ To change this template use File | Settings | File Templates.
 
       <!-- Import Footer -->
 
-      <c:import url="template/footer.jsp"/>
+      <c:import url="../template/footer.jsp"/>
 
       <!-- End of import Footer -->
     </div>
@@ -174,7 +174,7 @@ To change this template use File | Settings | File Templates.
     <i class="fas fa-angle-up"></i>
   </a>
 
-<c:import url="template/logoutModal.jsp"/>
+<c:import url="../template/logoutModal.jsp"/>
 
   <!-- Bootstrap core JavaScript-->
   <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>

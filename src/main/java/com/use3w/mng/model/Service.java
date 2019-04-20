@@ -1,8 +1,9 @@
 package com.use3w.mng.model;
 
-import com.sun.mail.util.LineInputStream;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;

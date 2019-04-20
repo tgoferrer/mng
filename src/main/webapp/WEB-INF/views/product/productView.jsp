@@ -33,7 +33,7 @@ To change this template use File | Settings | File Templates.
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <c:import url="template/sidebar.jsp"/>
+    <c:import url="../template/sidebar.jsp"/>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -41,7 +41,7 @@ To change this template use File | Settings | File Templates.
       <!-- Main Content -->
       <div id="content">
 
-        <c:import url="template/topbar.jsp"/>
+        <c:import url="../template/topbar.jsp"/>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -98,8 +98,8 @@ To change this template use File | Settings | File Templates.
                     <td>${product.productUnitInStock}</td>
                     <td><h6>Preço:</h6></td>
                     <td>R$ ${product.productPrice}</td>
-                    <td><h6>Status:</h6></td>
-                    <td>${product.productStatus}</td>
+                    <%--<td><h6>Status:</h6></td>--%>
+                    <%--<td>${product.productStatus}</td>--%>
                   </tr>
                   </tbody>
                   </table>
@@ -151,7 +151,7 @@ To change this template use File | Settings | File Templates.
         <a href="<c:url value=""/>" class="d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Editar</a> &nbsp
         <a href="<c:url value=""/>" class="d-sm-inline-block btn btn-sm btn-danger shadow-sm" data-toggle="modal" data-target="#productDelete"><i class="fas fa-trash fa-sm text-white-50"></i> Remover</a> &nbsp
           <!-- Modal Product Delete Import-->
-          <c:import url="template/productDeleteConfirmationModal.jsp"/>
+          <c:import url="../template/productDeleteConfirmationModal.jsp"/>
         <a href="<c:url value="productList"/>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Gerar relatório de produto</a>
       </div>
 
@@ -161,7 +161,7 @@ To change this template use File | Settings | File Templates.
 
       <!-- End of Main Content -->
 
-      <c:import url="template/footer.jsp"/>
+      <c:import url="../template/footer.jsp"/>
 
     </div>
     <!-- End of Content Wrapper -->
@@ -175,7 +175,7 @@ To change this template use File | Settings | File Templates.
     <i class="fas fa-angle-up"></i>
   </a>
 
-<c:import url="template/logoutModal.jsp"/>
+<c:import url="../template/logoutModal.jsp"/>
 
   <!-- Bootstrap core JavaScript-->
   <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>

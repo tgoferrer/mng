@@ -59,9 +59,9 @@
         <div id="collapseEstoque" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Produto:</h6>
-                <a class="collapse-item" href="pNovo.html">Novo</a>
-                <a class="collapse-item" href="<c:url value="/productList"/>">Editar / Remover</a>
-                <a class="collapse-item" href="<c:url value="/productList"/>">Consultar</a>
+                <a class="collapse-item" href="<c:url value="/product/productNew"/>">Novo</a>
+                <a class="collapse-item" href="<c:url value="/product/productList"/>">Editar / Remover</a>
+                <a class="collapse-item" href="<c:url value="/product/productList"/>">Consultar</a>
                     <h6 class="collapse-header">Serviços:</h6>
                 <a class="collapse-item" href="sNovo.html">Novo</a>
                 <a class="collapse-item" href="sAtualizarRemover.html">Editar / Remover</a>
