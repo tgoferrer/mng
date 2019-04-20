@@ -30,6 +30,8 @@ To change this template use File | Settings | File Templates.
   <!-- Custom styles for this page -->
   <link href="<c:url value="resources/vendor/datatables/dataTables.bootstrap4.min.css"/> " rel="stylesheet">
 
+  <%--<script type="text/javascript" src="<c:url value="resources/js/jquery.js"/>"/>--%>
+
 </head>
 
 <body id="page-top">

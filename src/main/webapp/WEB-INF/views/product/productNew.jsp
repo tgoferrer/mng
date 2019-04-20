@@ -72,88 +72,89 @@ To change this template use File | Settings | File Templates.
                   <h5>Dados do Produto</h5>
                   <br/>
 
+                    <form class="needs-validation" novalidate action='<c:url value="/product/productNew"/>' method="post">
 
+                      <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.product']}"/>
 
-
-                  <div class=" col-md-6 col-md-offset-3">
-                    <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.product']}"/>
-
-                    <form action='<c:url value="/product/productNew"/>' method="post">
                       <input type="hidden" name="id" value="${productForm.productFormId}">
                       <input type="hidden" name="id" value="${productForm.productId}">
 
-                      <div class="form-group">
-                        <label for="name">Nome:</label>
-                        <input id="name" type="text" name="productName" class="form-control" value="${productForm.productName}">
-                        <c:forEach items="${bindingResult.getFieldErrors('productName')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="description">Descrição:</label>
-                        <input id="description" type="text" name="productDescription" class="form-control" value="${productForm.productDescription}">
-                        <c:forEach items="${bindingResult.getFieldErrors('productDescription')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="category">Categoria:</label>
-                        <input id="category" type="text" name="productCategory" class="form-control"
-                               value="${productForm.productCategory}">
-                        <c:forEach items="${bindingResult.getFieldErrors('productCategory')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="manufacturer">Fabricante:</label>
-                        <input id="manufacturer" type="text" name="productManufacturer" class="form-control" value="${productForm.productManufacturer}">
-                        <c:forEach items="${bindingResult.getFieldErrors('productManufacturer')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="unitInStock">Unidades no estoque:</label>
-                        <input id="unitInStock" type="text" name="productUnitInStock" class="form-control" value="${productForm.productUnitInStock}">
-                        <c:forEach items="${bindingResult.getFieldErrors('productUnitInStock')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="productAvailable" value="${productForm.productAvailable}" id="productAvailable">
-                          <label class="form-check-label" for="productAvailable">
-                            Produto disponível
-                          </label>
+                      <div class="form-row">
+                        <div class="col-md-7 mb-2">
+                          <label for="productFormName">Nome do produto</label>
+                          <input type="text" name="productName" class="form-control" id="productFormName" placeholder="Nome do produto" value="${productForm.productName}" required>
+                          <div class="valid-tooltip">
+                            Tudo certo nesse item!
+                          </div>
+                        </div>
+                        <div class="col-md-5 mb-2">
+                          <label for="productFormManufacturer">Fabricante</label>
+                          <input type="text" name="productManufacturer" class="form-control" id="productFormManufacturer" placeholder="Fabricante" value="${productForm.productManufacturer}" required>
+                          <div class="valid-tooltip">
+                            Tudo certo nesse item!
+                          </div>
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="price">Preço:</label>
-                        <input id="price" type="text" name="productPrice" class="form-control" value="${productForm.productPrice}">
-                        <c:forEach items="${bindingResult.getFieldErrors('price')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
+                      <div class="form-row">
+                        <div class="col-md-8 mb-2">
+                          <label for="productFormDescription">Descrição</label>
+                          <input type="text" name="productDescription" class="form-control" id="productFormDescription" placeholder="Descrição"
+                                 value="${productForm.productDescription}" required>
+                          <div class="valid-tooltip">
+                            Tudo certo nesse item!
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                          <label for="productFormCategory">Categoria</label>
+                          <input type="text" name="productCategory" class="form-control" id="productFormCategory" placeholder="Categoria"
+                                 value="${product.productCategory}" required>
+                          <div class="valid-tooltip">
+                            Tudo certo nesse item!
+                          </div>
+                        </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="supplier">Fornecedor:</label>
-                        <select id="supplier" name="supplierId" class="form-control">
-                          <option value="">Selecione o fornecedor</option>
-                          <c:forEach var="suppliers" items="${suppliers}">
-                            <option value="${suppliers.supplierId}" ${suppliers.supplierId.equals(productForm.supplierId)? "selected": ""}>${suppliers.supplierName}</option>
+
+                      <div class="form-row">
+
+                        <div class="col-md-2 mb-3">
+                        <label for="productFormUnitInStock">Quantidade</label>
+                        <input type="text" name="productUnitInStock" class="form-control" id="productFormUnitInStock" placeholder="0"
+                               value="${product.productUnitInStock}" required>
+                        <div class="valid-tooltip">
+                          Tudo certo nesse item!
+                        </div>
+                      </div>
+                        <div class="col-md-4 mb-3">
+                          <label for="productFormPrice">Preço</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">R$</span>
+                            </div>
+                            <input type="text" name="productPrice" class="form-control" id="productFormPrice" placeholder="0.00" value="${productForm.productUnitInStock}"  required>
+                          </div>
+                        </div>
+
+
+
+                        <div class="col-md-6 mb-3">
+                          <label for="supplier">Fornecedor:</label>
+                          <select id="supplier" name="supplierId" class="form-control">
+                            <option value="">Selecione o fornecedor</option>
+                            <c:forEach var="suppliers" items="${suppliers}">
+                              <option value="${suppliers.supplierId}" ${suppliers.supplierId.equals(productForm.supplierId)? "selected": ""}>${suppliers.supplierId} - ${suppliers.supplierName} (CNPJ: ${suppliers.supplierCNPJ})</option>
+                            </c:forEach>
+                          </select>
+                          <c:forEach items="${bindingResult.getFieldErrors('supplierId')}" var="error">
+                            <span class="text-danger">${error.defaultMessage}</span>
                           </c:forEach>
-                        </select>
-                        <c:forEach items="${bindingResult.getFieldErrors('supplierId')}" var="error">
-                          <span class="text-danger">${error.defaultMessage}</span>
-                        </c:forEach>
+                        </div>
                       </div>
-
-                      <button type="submit" class="btn btn-primary">Salvar</button>
+                      <div class="d-flex justify-content-end">
+                      <button type="reset" class="btn btn-danger" >Apagar tudo</button>&nbsp;
+                        <button type="submit" class="btn btn-primary" >Salvar</button>
+                      </div>
                     </form>
                   <br/>
 
@@ -170,7 +171,7 @@ To change this template use File | Settings | File Templates.
 
         <!-- End of actions bar-->
 
-
+      </div>
       <!-- End of Main Content -->
 
       <c:import url="../template/footer.jsp"/>
