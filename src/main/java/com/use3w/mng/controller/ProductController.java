@@ -36,25 +36,8 @@ public class ProductController {
         return modelAndView;
     }
 
-//    @GetMapping("product/productList/productView/{productId}-{supplierId}")
-//    public ModelAndView productView(@PathVariable("productId") Integer productId,
-//                                    @PathVariable("supplierId") Integer supplierId) {
-//
-//        ModelAndView modelAndView = new ModelAndView("product/productView");
-//
-//        Product product = productDao.findOne(productId);
-//        Supplier supplier = supplierDao.findOne(supplierId);
-//
-//
-//        modelAndView.addObject("product", product);
-//        modelAndView.addObject("supplier", supplier);
-//
-//        return modelAndView;
-//
-//    }
-
     @GetMapping("product/productList/productView/{productId}")
-    public ModelAndView productView(@PathVariable("productId") Integer productId) {
+    public ModelAndView productView(@PathVariable("productId") Integer productId, boolean newProductAlert) {
 
         ModelAndView modelAndView = new ModelAndView("product/productView");
 
@@ -64,6 +47,7 @@ public class ProductController {
 
         modelAndView.addObject("product", product);
         modelAndView.addObject("supplier", supplier);
+        modelAndView.addObject("newProductAlert", newProductAlert);
 
         return modelAndView;
 
@@ -93,7 +77,13 @@ public class ProductController {
 
         productDao.save(product);
 
-        return new ModelAndView("redirect:/product/productList/productView/" + product.getProductId());
+        boolean newProductAlert = true;
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/product/productList/productView/" + product.getProductId());
+
+        modelAndView.addObject("newProductAlert",newProductAlert);
+
+        return modelAndView;
 
     }
 
