@@ -69,6 +69,12 @@ To change this template use File | Settings | File Templates.
                   <h6 class="m-0 font-weight-bold text-primary">Produtos > Consultar / Editar / Remover > ${product.productName}</h6>
                 </div>
                 <div class="card-body">
+
+                 <c:if test="${newProductAlert == 'true'}">
+                   <c:import url="../template/alerts/alertSucessAddProduct.jsp" />
+                 </c:if>
+
+
                   <h5>Dados do Produto</h5>
                   <br/>
                   <table class="table table-bordered">

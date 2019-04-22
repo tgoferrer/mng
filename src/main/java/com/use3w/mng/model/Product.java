@@ -1,8 +1,5 @@
 package com.use3w.mng.model;
 
-import com.use3w.mng.dao.SupplierDao;
-import com.use3w.mng.model.form.ProductForm;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
