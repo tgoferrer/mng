@@ -1,17 +1,18 @@
 package com.use3w.mng.model.form;
 
 import com.use3w.mng.model.Supplier;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
 public class SupplierForm {
 
     private Integer supplierFormId;
-    @NotNull(message = "Id do fornecedor não foi gerado")
+    @NotEmpty(message = "Id do fornecedor não foi gerado")
     private Integer supplierId;
-    @NotNull(message = "É necessário inserir o CNPJ válido para o fornecedor")
+    @NotEmpty(message = "É necessário inserir o CNPJ válido para o fornecedor")
     private String supplierCNPJ;
-    @NotNull(message = "É necessário inserir um nome para o fornecedor")
+    @NotEmpty(message = "É necessário inserir um nome para o fornecedor")
     private String supplierName;
     private String supplierAddress;
     private String supplierCPE;

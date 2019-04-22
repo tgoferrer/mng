@@ -71,7 +71,7 @@ To change this template use File | Settings | File Templates.
                 <div class="card-body">
 
                  <c:if test="${newProductAlert == 'true'}">
-                   <c:import url="../template/alerts/alertSucessAddProduct.jsp" />
+                   <c:import url="../template/alerts/alertSucessAddDB.jsp" />
                  </c:if>
 
 

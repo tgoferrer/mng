@@ -72,9 +72,13 @@ To change this template use File | Settings | File Templates.
                   <h5>Dados do Produto</h5>
                   <br/>
 
+                  <c:if test="${not empty requestScope['org.springframework.validation.BindingResult.productForm'].allErrors}">
+                    <c:import url="../template/alerts/alertErroAddDB.jsp" />
+                  </c:if>
+
                     <form class="needs-validation" novalidate action='<c:url value="/product/productNew"/>' method="post">
 
-                      <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.product']}"/>
+                      <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.productForm']}"/>
 
                       <input type="hidden" name="id" value="${productForm.productFormId}">
                       <input type="hidden" name="id" value="${productForm.productId}">
@@ -83,16 +87,16 @@ To change this template use File | Settings | File Templates.
                         <div class="col-md-7 mb-2">
                           <label for="productFormName">Nome do produto</label>
                           <input type="text" name="productName" class="form-control" id="productFormName" placeholder="Nome do produto" value="${productForm.productName}" required>
-                          <div class="valid-tooltip">
-                            Tudo certo nesse item!
-                          </div>
+                          <c:forEach items="${bindingResult.getFieldErrors('productName')}" var="error">
+                            <span class="text-danger">${error.defaultMessage}</span>
+                          </c:forEach>
                         </div>
                         <div class="col-md-5 mb-2">
                           <label for="productFormManufacturer">Fabricante</label>
                           <input type="text" name="productManufacturer" class="form-control" id="productFormManufacturer" placeholder="Fabricante" value="${productForm.productManufacturer}" required>
-                          <div class="valid-tooltip">
-                            Tudo certo nesse item!
-                          </div>
+                          <c:forEach items="${bindingResult.getFieldErrors('productManufacturer')}" var="error">
+                            <span class="text-danger">${error.defaultMessage}</span>
+                          </c:forEach>
                         </div>
                       </div>
 
@@ -101,17 +105,17 @@ To change this template use File | Settings | File Templates.
                           <label for="productFormDescription">Descrição</label>
                           <input type="text" name="productDescription" class="form-control" id="productFormDescription" placeholder="Descrição"
                                  value="${productForm.productDescription}" required>
-                          <div class="valid-tooltip">
-                            Tudo certo nesse item!
-                          </div>
+                          <c:forEach items="${bindingResult.getFieldErrors('productDescription')}" var="error">
+                            <span class="text-danger">${error.defaultMessage}</span>
+                          </c:forEach>
                         </div>
                         <div class="col-md-4 mb-2">
                           <label for="productFormCategory">Categoria</label>
                           <input type="text" name="productCategory" class="form-control" id="productFormCategory" placeholder="Categoria"
                                  value="${product.productCategory}" required>
-                          <div class="valid-tooltip">
-                            Tudo certo nesse item!
-                          </div>
+                          <c:forEach items="${bindingResult.getFieldErrors('productCategory')}" var="error">
+                            <span class="text-danger">${error.defaultMessage}</span>
+                          </c:forEach>
                         </div>
                       </div>
 
@@ -122,9 +126,9 @@ To change this template use File | Settings | File Templates.
                         <label for="productFormUnitInStock">Quantidade</label>
                         <input type="text" name="productUnitInStock" class="form-control" id="productFormUnitInStock" placeholder="0"
                                value="${product.productUnitInStock}" required>
-                        <div class="valid-tooltip">
-                          Tudo certo nesse item!
-                        </div>
+                          <c:forEach items="${bindingResult.getFieldErrors('productUnitInStock')}" var="error">
+                            <span class="text-danger">Ops.. insira um valor <b>inteiro</b> válido!</span>
+                          </c:forEach>
                       </div>
                         <div class="col-md-4 mb-3">
                           <label for="productFormPrice">Preço</label>
@@ -132,7 +136,10 @@ To change this template use File | Settings | File Templates.
                             <div class="input-group-prepend">
                               <span class="input-group-text">R$</span>
                             </div>
-                            <input type="text" name="productPrice" class="form-control" id="productFormPrice" placeholder="0.00" value="${productForm.productUnitInStock}"  required>
+                            <input type="text" name="productPrice" class="form-control" id="productFormPrice" placeholder="0.00" value="${productForm.productPrice}"  required>
+                            <c:forEach items="${bindingResult.getFieldErrors('productPrice')}" var="error">
+                              <span class="text-danger">${error.defaultMessage}</span>
+                            </c:forEach>
                           </div>
                         </div>
 

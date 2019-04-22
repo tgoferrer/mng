@@ -12,14 +12,19 @@ public class ProductForm {
 
     private Integer productFormId;
     private Integer productId;
-    @NotEmpty(message = "Por favor, digite um nome para o produto que deseja adicionar")
+    @NotEmpty(message = "Ops... é necessário um <b>nome</b> para o produto que deseja adicionar!")
     private String productName;
+    @NotEmpty(message = "Ops... Parece que alguém esqueceu a <b>categoria</b> do produto!")
     private String productCategory;
+    @NotEmpty(message = "Ops... Parece que alguém esqueceu a <b>descrição</b> do produto!")
     private String productDescription;
     private BigDecimal productPrice = BigDecimal.ZERO;
     private boolean productAvailable = false;
-    private int productUnitInStock = 0;
+    @NotNull(message = "Ops... Parece que você esqueceu de mim!")
+    private int productUnitInStock;
+    @NotEmpty(message = "Ops! Parece que alguém esqueceu o <b>fabricante</b> do produto!")
     private String productManufacturer;
+    @NotNull(message = "Ops... Parece que você esqueceu de escolher um <b>fornecedor</b>!")
     private Integer supplierId;
 
     public Integer getProductFormId() {

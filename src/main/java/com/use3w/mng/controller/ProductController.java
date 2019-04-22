@@ -58,7 +58,6 @@ public class ProductController {
 
         ModelAndView modelAndView = new ModelAndView("product/productNew");
 
-
         modelAndView.addObject("suppliers", supplierDao.findAll());
         modelAndView.addObject("productForm", productForm);
 
