@@ -39,11 +39,9 @@ public class Supplier {
 
     public String getSupplierCNPJ() {
         try {
-            System.out.println(supplierCNPJ);
             MaskFormatter mask = new MaskFormatter("###.###.###/####-##");
             mask.setValueContainsLiteralCharacters(false);
             supplierCNPJ = mask.valueToString(supplierCNPJ);
-            System.out.println(supplierCNPJ);
 
         } catch (ParseException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,6 +80,16 @@ public class Supplier {
     }
 
     public String getSupplierCPE() {
+        try {
+            MaskFormatter mask = new MaskFormatter("#####-###");
+            mask.setValueContainsLiteralCharacters(false);
+            supplierCPE = mask.valueToString(supplierCPE);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Deu ruim!");
+        }
+
         return supplierCPE;
     }
 
@@ -105,23 +113,4 @@ public class Supplier {
         this.supplierEmail = supplierEmail;
     }
 
-    public String getSupllierCNPJFormatted() {
-
-        String CNPJFormatted = this.supplierCNPJ;
-
-        System.out.println("Entrada do CNPJ" + CNPJFormatted);
-
-        try {
-            MaskFormatter mask = new MaskFormatter("###.###.###/####-##");
-            mask.setValueContainsLiteralCharacters(false);
-            CNPJFormatted = mask.valueToString(CNPJFormatted);
-
-            System.out.println("Saída do CNPJ" + CNPJFormatted);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Deu ruim!");
-        }
-        return CNPJFormatted;
-    }
 }
