@@ -95,11 +95,16 @@ To change this template use File | Settings | File Templates.
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+
+                                        <div class="col-md-12 mb-2">
                                             <h6><b>Descrição </b></h6>
                                             <p>${product.productDescription}</p>
                                         </div>
-                                        <div class="col-md-2 mb-2">
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
                                             <h6><b>Categoria </b></h6>
                                             <p>${product.productCategory}</p>
                                         </div>
@@ -108,108 +113,109 @@ To change this template use File | Settings | File Templates.
                                             <h6><b>Quantidade</b></h6>
                                             <p>${product.productUnitInStock}</p>
                                         </div>
-                                        <div class="col-md-1 mb-2">
+                                        <div class="col-md-4 mb-2">
                                             <h6><b>Preço</b></h6>
                                             <p>R$${product.productPrice}</p>
                                         </div>
                                     </div>
-                                    <br/>
-                                    <h5>Dados do fornecedor</h5>
-                                    <br/>
-                                    <div class="row">
-                                        <div class="col-md-1 mb-2">
-                                            <h6><b>ID </b></h6>
-                                            <p>${supplier.supplierId}</p>
-                                        </div>
-                                        <div class="col-md-5 mb-2">
-                                            <h6><b>Razão Social </b></h6>
-                                            <p>${supplier.supplierName}</p>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <h6><b>CNPJ</b></h6>
-                                            <p>${supplier.supplierCNPJ}</p>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <h6><b>Telefone</b></h6>
-                                            <p>${supplier.supplierPhone}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-2">
-                                            <h6><b>Endereço </b></h6>
-                                            <p>${supplier.supplierAddress}</p>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <h6><b>CPE</b></h6>
-                                            <p>${supplier.supplierCPE}</p>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <h6><b>E-mail</b></h6>
-                                            <p>${supplier.supplierEmail}</p>
-                                        </div>
-                                    </div>
 
+                                <br/>
+                                <h5>Dados do fornecedor</h5>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-1 mb-2">
+                                        <h6><b>ID </b></h6>
+                                        <p>${supplier.supplierId}</p>
+                                    </div>
+                                    <div class="col-md-5 mb-2">
+                                        <h6><b>Razão Social </b></h6>
+                                        <p>${supplier.supplierName}</p>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <h6><b>CNPJ</b></h6>
+                                        <p>${supplier.supplierCNPJ}</p>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <h6><b>Telefone</b></h6>
+                                        <p>${supplier.supplierPhone}</p>
+                                    </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <h6><b>Endereço </b></h6>
+                                        <p>${supplier.supplierAddress}</p>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <h6><b>CPE</b></h6>
+                                        <p>${supplier.supplierCPE}</p>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <h6><b>E-mail</b></h6>
+                                        <p>${supplier.supplierEmail}</p>
+                                    </div>
+                                </div>
+
                             </div>
-
                         </div>
+
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
+
             </div>
-
-            <!-- Actions bar-->
-            <div class="d-sm-flex align-items-center justify-content-center mb-4">
-                <a href="<c:url value=""/>" class="d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
-                        class="fas fa-edit fa-sm text-white-50"></i> Editar</a> &nbsp
-                <a href="<c:url value=""/>" class="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                   data-toggle="modal" data-target="#productDelete"><i class="fas fa-trash fa-sm text-white-50"></i>
-                    Remover</a> &nbsp
-                <!-- Modal Product Delete Import-->
-                <c:import url="../template/productDeleteConfirmationModal.jsp"/>
-                <a href="<c:url value="productList"/>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i> Gerar relatório de produto</a>
-            </div>
-
-
-            <!-- End of actions bar-->
-
-
-            <!-- End of Main Content -->
-
-            <c:import url="../template/footer.jsp"/>
-
+            <!-- /.container-fluid -->
         </div>
-        <!-- End of Content Wrapper -->
+
+        <!-- Actions bar-->
+        <div class="d-sm-flex align-items-center justify-content-center mb-4">
+            <a href="<c:url value=""/>" class="d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
+                    class="fas fa-edit fa-sm text-white-50"></i> Editar</a> &nbsp
+            <a href="<c:url value=""/>" class="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+               data-toggle="modal" data-target="#productDelete"><i class="fas fa-trash fa-sm text-white-50"></i>
+                Remover</a> &nbsp
+            <!-- Modal Product Delete Import-->
+            <c:import url="../template/productDeleteConfirmationModal.jsp"/>
+            <a href="<c:url value="productList"/>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Gerar relatório de produto</a>
+        </div>
+
+
+        <!-- End of actions bar-->
+
+
+        <!-- End of Main Content -->
+
+        <c:import url="../template/footer.jsp"/>
 
     </div>
+    <!-- End of Content Wrapper -->
 
-    <!-- End of Page Wrapper -->
+</div>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<!-- End of Page Wrapper -->
 
-    <c:import url="../template/logoutModal.jsp"/>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
-    <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+<c:import url="../template/logoutModal.jsp"/>
 
-    <!-- Core plugin JavaScript-->
-    <script src="<c:url value="/resources/vendor/jquery-easing/jquery.easing.min.js"/> "></script>
+<!-- Bootstrap core JavaScript-->
+<script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="<c:url value="/resources/js/sb-admin-2.min.js"/>"></script>
+<!-- Core plugin JavaScript-->
+<script src="<c:url value="/resources/vendor/jquery-easing/jquery.easing.min.js"/> "></script>
 
-    <!-- Page level plugins -->
-    <script src="<c:url value="/resources/vendor/chart.js/Chart.min.js"/> "></script>
+<!-- Custom scripts for all pages-->
+<script src="<c:url value="/resources/js/sb-admin-2.min.js"/>"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="<c:url value="/resources/js/demo/chart-area-demo.js"/> "></script>
-    <script src="<c:url value="/resources/js/demo/chart-pie-demo.js"/> "></script>
+<!-- Page level plugins -->
+<script src="<c:url value="/resources/vendor/chart.js/Chart.min.js"/> "></script>
+
+<!-- Page level custom scripts -->
+<script src="<c:url value="/resources/js/demo/chart-area-demo.js"/> "></script>
+<script src="<c:url value="/resources/js/demo/chart-pie-demo.js"/> "></script>
 
 </body>
 

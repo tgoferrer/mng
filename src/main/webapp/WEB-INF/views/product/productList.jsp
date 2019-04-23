@@ -61,50 +61,6 @@ To change this template use File | Settings | File Templates.
                 Opções de visualização
               </button>
 
-              <!-- Modal -->
-              <div class="modal fade" id="productTableOptions" tabindex="-1" role="dialog" aria-labelledby="productTableOptions" aria-hidden="true">
-                <div class="modal-dialog" role="form">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="productTableOptionsl">Opções de visualização</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="productId">
-                      <label class="form-check-label" for="productId"> Id</label>
-                      </div>
-                      <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="productName">
-                      <label class="form-check-label" for="productName"> Identificação</label>
-                      </div>
-                      <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="productDescription">
-                      <label class="form-check-label" for="productDescription"> Descrição</label>
-                      </div>
-                      <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="productManufacturer">
-                      <label class="form-check-label" for="productManufacturer"> Fabricante</label>
-                      </div>
-                      <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="productUnitInStock">
-                      <label class="form-check-label" for="productUnitInStock"> Unidades disponíveis</label>
-                      </div>
-                      <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="productPrice">
-                      <label class="form-check-label" for="productPrice"> Preço</label>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-primary">Aplicar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             <!-- End of Table options -->
 
           </div>
@@ -115,6 +71,9 @@ To change this template use File | Settings | File Templates.
               <h6 class="m-0 font-weight-bold text-primary">Produtos > Consultar / Editar / Remover </h6>
             </div>
             <div class="card-body">
+              <c:if test="${deleteProductAlert == 'true'}">
+                <c:import url="../template/alerts/alertSucessDelDB.jsp"/>
+              </c:if>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -124,7 +83,7 @@ To change this template use File | Settings | File Templates.
                     <th>Descrição</th>
                     <th>Fabricante</th>
                     <%--<th>Status</th>--%>
-                    <th>Ação</th>
+                    <th>Consultar</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -137,10 +96,6 @@ To change this template use File | Settings | File Templates.
                     <%--<td>${product.productStatus}</td>--%>
                     <td><center>
                       <a class="fas fa-fw fa-file-invoice" href="<spring:url value="/product/productList/productView/${product.productId}"/>"/>
-                      <a class="fas fa-fw fa-edit"/>
-                      <a class="fas fa-fw fa-trash" data-toggle="modal" data-target="#productDelete" href="/productList/productView/${product.productId}/delete"></a>
-                        <!-- Modal Product Delete Import-->
-                        <c:import url="../template/productDeleteConfirmationModal.jsp"/>
                       </center></td>
                     </c:forEach>
                   </tbody>

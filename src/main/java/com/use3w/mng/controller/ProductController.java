@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +28,12 @@ public class ProductController {
     private SupplierDao supplierDao;
 
     @GetMapping("/product/productList")
-    public ModelAndView getProductsAction() {
+    public ModelAndView getProductsAction(boolean deleteProductAlert) {
 
         ModelAndView modelAndView = new ModelAndView("product/productList");
 
         modelAndView.addObject("products", productDao.findAll());
+        modelAndView.addObject("deleteProductAlert",deleteProductAlert);
 
         return modelAndView;
     }
@@ -86,6 +88,21 @@ public class ProductController {
 
     }
 
+    @PostMapping("/product/productView/{productId}/delete")
+    @Transactional
+    public ModelAndView delete(@PathVariable("productId") Integer productId){
+        boolean deleteProductAlert;
+        ModelAndView modelAndView = new ModelAndView("redirect:/product/productList");
+        try {
+            productDao.delete(productId);
+            deleteProductAlert = true;
+        } catch (Exception e){
+            deleteProductAlert = false;
+        }
+        modelAndView.addObject("deleteProductAlert",deleteProductAlert);
 
+        return modelAndView;
+
+    }
 }
 
