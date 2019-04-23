@@ -60,12 +60,16 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Produto:</h6>
                 <a class="collapse-item" href="<c:url value="/product/productNew"/>">Novo</a>
-                <a class="collapse-item" href="<c:url value="/product/productList"/>">Editar / Remover</a>
-                <a class="collapse-item" href="<c:url value="/product/productList"/>">Consultar</a>
-                    <h6 class="collapse-header">Serviços:</h6>
-                <a class="collapse-item" href="sNovo.html">Novo</a>
-                <a class="collapse-item" href="sAtualizarRemover.html">Editar / Remover</a>
-                <a class="collapse-item" href="sConsultar.html">Consultar</a>
+                <a class="collapse-item" href="<c:url value="/product/productList"/>">Consultar/Editar/Remover</a>
+                <h6 class="collapse-header">Categoria de Produtos:</h6>
+                <a class="collapse-item" href="<c:url value="/product/categoryNew"/>">Nova</a>
+                <a class="collapse-item" href="<c:url value="/product/categoryList"/>">Consultar/Editar/Remover</a>
+                <h6 class="collapse-header">Serviços:</h6>
+                <a class="collapse-item" href="<c:url value="/service/serviceNew"/>">Novo</a>
+                <a class="collapse-item" href="<c:url value="/service/serviceList"/>">Consultar/Editar/Remover</a>
+                <h6 class="collapse-header">Categoria de Serviços:</h6>
+                <a class="collapse-item" href="<c:url value="/service/categoryNew"/>">Nova</a>
+                <a class="collapse-item" href="<c:url value="/service/categoryList"/>">Consultar/Editar/Remover</a>
             </div>
         </div>
     </li>
