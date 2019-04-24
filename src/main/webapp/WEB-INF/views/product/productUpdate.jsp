@@ -76,22 +76,33 @@ To change this template use File | Settings | File Templates.
                     <c:import url="../template/alerts/alertErroAddDB.jsp" />
                   </c:if>
 
-                    <form class="needs-validation" novalidate action='<c:url value="/product/productNew"/>' method="post">
+                    <form class="needs-validation" novalidate action='<c:url value="/product/productView/{productId}/update"/>' method="post">
 
                       <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.productForm']}"/>
 
                       <input type="hidden" name="id" value="${productForm.productFormId}">
                       <input type="hidden" name="id" value="${productForm.productId}">
 
+                      <c:import url="../template/alerts/alertNotifyUpdateDB.jsp" />
+
                       <div class="form-row">
-                        <div class="col-md-7 mb-2">
+                        <div class="col-md-1 mb-3">
+                          <label for="productFormId">ID</label>
+                          <%--<p>${productForm.productId}</p>--%>
+                          <input type="text" name="#" class="form-control" id="#" placeholder="#" value="${productForm.productId}" disabled>
+                          <input type="text" name="productId" class="form-control" id="productFormId" placeholder="${productForm.productId}" value="${productForm.productId}" hidden>
+                          <c:forEach items="${bindingResult.getFieldErrors('productId')}" var="error">
+                            <span class="text-danger">${error.defaultMessage}</span>
+                          </c:forEach>
+                        </div>
+                        <div class="col-md-7 mb-3">
                           <label for="productFormName">Nome do produto</label>
                           <input type="text" name="productName" class="form-control" id="productFormName" placeholder="Nome do produto" value="${productForm.productName}" required>
                           <c:forEach items="${bindingResult.getFieldErrors('productName')}" var="error">
                             <span class="text-danger">${error.defaultMessage}</span>
                           </c:forEach>
                         </div>
-                        <div class="col-md-5 mb-2">
+                        <div class="col-md-4 mb-3">
                           <label for="productFormManufacturer">Fabricante</label>
                           <input type="text" name="productManufacturer" class="form-control" id="productFormManufacturer" placeholder="Fabricante" value="${productForm.productManufacturer}" required>
                           <c:forEach items="${bindingResult.getFieldErrors('productManufacturer')}" var="error">
@@ -159,8 +170,8 @@ To change this template use File | Settings | File Templates.
                         </div>
                       </div>
                       <div class="d-flex justify-content-end">
-                      <button type="reset" class="btn btn-danger" >Apagar tudo</button>&nbsp;
-                        <button type="submit" class="btn btn-primary" >Salvar</button>
+                      <a class="btn btn-warning" href="<c:url value="/product/productList"/>" role="button"> Cancelar </a>&nbsp;
+                        <button type="submit" class="btn btn-danger" >Salvar alterações</button>
                       </div>
                     </form>
                   <br/>

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +32,7 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("product/productList");
 
         modelAndView.addObject("products", productDao.findAll());
-        modelAndView.addObject("deleteProductAlert",deleteProductAlert);
+        modelAndView.addObject("deleteProductAlert", deleteProductAlert);
 
         return modelAndView;
     }
@@ -56,9 +55,9 @@ public class ProductController {
     }
 
     @GetMapping("/product/productNew")
-    public ModelAndView form(ProductForm productForm) {
+    public ModelAndView form(ProductForm productForm, String viewName) {
 
-        ModelAndView modelAndView = new ModelAndView("product/productNew");
+        ModelAndView modelAndView = new ModelAndView(viewName);
 
         modelAndView.addObject("suppliers", supplierDao.findAll());
         modelAndView.addObject("productForm", productForm);
@@ -70,19 +69,45 @@ public class ProductController {
     @Transactional
     public ModelAndView save(@Valid ProductForm productForm, BindingResult result) {
 
+        String viewName = "/product/productNew";
+
         if (result.hasErrors()) {
-            return form(productForm);
+            return form(productForm, viewName);
         }
 
         Product product = productForm.toProduct(supplierDao);
 
         productDao.save(product);
 
-        boolean newProductAlert = true;
-
         ModelAndView modelAndView = new ModelAndView("redirect:/product/productList/productView/" + product.getProductId());
 
-        modelAndView.addObject("newProductAlert",newProductAlert);
+        boolean newProductAlert = true;
+
+        modelAndView.addObject("product", product);
+        modelAndView.addObject("newProductAlert", newProductAlert);
+        modelAndView.addObject("viewName", viewName);
+
+        return modelAndView;
+
+    }
+
+    @GetMapping("/product/productView/{productId}/update")
+    public ModelAndView toUpdate(@PathVariable("productId") Integer productId) {
+
+        Product product = productDao.findOne(productId);
+        Supplier supplier = supplierDao.findOne(product.getProductSupplier().getSupplierId());
+        String viewName = "product/productUpdate";
+
+        ProductForm productForm = product.toProductForm();
+
+        ModelAndView modelAndView = new ModelAndView(viewName);
+
+        modelAndView.addObject("supplier", supplier);
+        modelAndView.addObject("suppliers", supplierDao.findAll());
+        modelAndView.addObject("productForm", productForm);
+        modelAndView.addObject("product", product);
+        modelAndView.addObject("viewName", viewName);
+
 
         return modelAndView;
 
@@ -90,19 +115,47 @@ public class ProductController {
 
     @PostMapping("/product/productView/{productId}/delete")
     @Transactional
-    public ModelAndView delete(@PathVariable("productId") Integer productId){
+    public ModelAndView delete(@PathVariable("productId") Integer productId) {
         boolean deleteProductAlert;
         ModelAndView modelAndView = new ModelAndView("redirect:/product/productList");
         try {
             productDao.delete(productId);
             deleteProductAlert = true;
-        } catch (Exception e){
+        } catch (Exception e) {
             deleteProductAlert = false;
         }
-        modelAndView.addObject("deleteProductAlert",deleteProductAlert);
+        modelAndView.addObject("deleteProductAlert", deleteProductAlert);
 
         return modelAndView;
 
     }
+
+
+    @PostMapping("/product/productView/{productId}/update")
+    @Transactional
+    public ModelAndView update(@Valid ProductForm productForm, Product product, BindingResult result) {
+
+        String viewName = "product/productUpdate";
+
+        if (result.hasErrors()) {
+            return form(productForm, viewName);
+        }
+
+        Product product1 = productForm.toProduct(supplierDao);
+
+        productDao.update(product, product1);
+
+        boolean newProductAlert = true;
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/product/productList/productView/" + product.getProductId());
+
+        modelAndView.addObject("product", product);
+        modelAndView.addObject("newProductAlert", newProductAlert);
+
+        return modelAndView;
+
+    }
+
+
 }
 

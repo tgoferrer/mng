@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title" >Confirme se o produto descrito abaixo deve ser deletado</h6>
+                <h6 class="modal-title" ><center><b>Confirme se o produto descrito abaixo deve ser deletado</b></center></h6>
             </div>
             <form action="<c:url value="/product/productView/${product.productId}/delete"/>" method="post">
             <div class="modal-body">

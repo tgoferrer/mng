@@ -27,6 +27,23 @@ public class ProductForm {
     @NotNull(message = "Ops... Parece que você esqueceu de escolher um <b>fornecedor</b>!")
     private Integer supplierId;
 
+    /**
+     * @deprecated hibernate only
+     */
+    public ProductForm() {
+    }
+
+    public ProductForm(String productName, String productCategory, String productDescription, BigDecimal productPrice, boolean productAvailable, int productUnitInStock, String productManufacturer, Integer supplierId) {
+        this.productName = productName;
+        this.productCategory = productCategory;
+        this.productDescription = productDescription;
+        this.productPrice = productPrice;
+        this.productAvailable = productAvailable;
+        this.productUnitInStock = productUnitInStock;
+        this.productManufacturer = productManufacturer;
+        this.supplierId = supplierId;
+    }
+
     public Integer getProductFormId() {
         return productFormId;
     }

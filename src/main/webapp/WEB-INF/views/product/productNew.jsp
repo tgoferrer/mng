@@ -112,7 +112,7 @@ To change this template use File | Settings | File Templates.
                         <div class="col-md-4 mb-2">
                           <label for="productFormCategory">Categoria</label>
                           <input type="text" name="productCategory" class="form-control" id="productFormCategory" placeholder="Categoria"
-                                 value="${product.productCategory}" required>
+                                 value="${productForm.productCategory}" required>
                           <c:forEach items="${bindingResult.getFieldErrors('productCategory')}" var="error">
                             <span class="text-danger">${error.defaultMessage}</span>
                           </c:forEach>
@@ -125,7 +125,7 @@ To change this template use File | Settings | File Templates.
                         <div class="col-md-2 mb-3">
                         <label for="productFormUnitInStock">Quantidade</label>
                         <input type="text" name="productUnitInStock" class="form-control" id="productFormUnitInStock" placeholder="0"
-                               value="${product.productUnitInStock}" required>
+                               value="${productForm.productUnitInStock}" required>
                           <c:forEach items="${bindingResult.getFieldErrors('productUnitInStock')}" var="error">
                             <span class="text-danger">Ops.. insira um valor <b>inteiro</b> válido!</span>
                           </c:forEach>
@@ -138,7 +138,7 @@ To change this template use File | Settings | File Templates.
                             </div>
                             <input type="text" name="productPrice" class="form-control" id="productFormPrice" placeholder="0.00" value="${productForm.productPrice}"  required>
                             <c:forEach items="${bindingResult.getFieldErrors('productPrice')}" var="error">
-                              <span class="text-danger">${error.defaultMessage}</span>
+                              <span class="text-danger">Ops.. insira um valor válido! </span>
                             </c:forEach>
                           </div>
                         </div>

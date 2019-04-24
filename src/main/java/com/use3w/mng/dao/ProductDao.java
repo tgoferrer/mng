@@ -31,4 +31,15 @@ public class ProductDao {
         em.remove(findOne(productId));
     }
 
+    public void update(Product product, Product product1) {
+            product.setProductId(product.getProductId());
+            product.setProductName(product1.getProductName());
+            product.setProductCategory(product1.getProductCategory());
+            product.setProductDescription(product1.getProductDescription());
+            product.setProductPrice(product1.getProductPrice());
+            product.setProductUnitInStock(product1.getProductUnitInStock());
+            product.setProductManufacturer(product1.getProductManufacturer());
+            product.setProductSupplier(product1.getProductSupplier());
+            em.merge(product);
+    }
 }
