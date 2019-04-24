@@ -9,7 +9,7 @@
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <h4>Deu tudo certo!</h4>
-    <p> As informações abaixo acabaram de serem entregues em no nosso banco de dados. Caso tenha algo de errado nesse
+    <p> As informações abaixo acabaram de serem entregues no nosso banco de dados. Caso tenha algo de errado nesse
         cadastro, clique
         em editar ou remover na barra de ação no rodapé dessa página.</p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

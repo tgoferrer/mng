@@ -1,6 +1,5 @@
 package com.use3w.mng.model;
 
-import com.use3w.mng.dao.SupplierDao;
 import com.use3w.mng.model.form.ProductForm;
 
 import javax.persistence.Entity;
@@ -122,11 +121,11 @@ public class Product {
                 this.productPrice, this.productAvailable, this.productUnitInStock, this.productManufacturer,
                 this.productSupplier.getSupplierId());
 
-        System.out.println("Antes de setar o productFormId ="+productForm.getProductId());
+        System.out.println("Antes de setar o productFormId =" + productForm.getProductId());
 
         productForm.setProductId(this.productId);
 
-        System.out.println("Depois de setar o productFormId ="+productForm.getProductId());
+        System.out.println("Depois de setar o productFormId =" + productForm.getProductId());
 
         return productForm;
     }

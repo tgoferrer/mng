@@ -133,24 +133,28 @@ public class ProductController {
 
     @PostMapping("/product/productView/{productId}/update")
     @Transactional
-    public ModelAndView update(@Valid ProductForm productForm, Product product, BindingResult result) {
+    public ModelAndView update(@Valid ProductForm productForm,  BindingResult result, Product product) {
 
         String viewName = "product/productUpdate";
 
+        System.out.println(1);
         if (result.hasErrors()) {
+            System.out.println(2);
             return form(productForm, viewName);
         }
-
+        System.out.println(3);
         Product product1 = productForm.toProduct(supplierDao);
-
+        System.out.println(4);
         productDao.update(product, product1);
-
+        System.out.println(5);
         boolean newProductAlert = true;
 
         ModelAndView modelAndView = new ModelAndView("redirect:/product/productList/productView/" + product.getProductId());
 
         modelAndView.addObject("product", product);
+        System.out.println(6);
         modelAndView.addObject("newProductAlert", newProductAlert);
+        System.out.println(7);
 
         return modelAndView;
 
