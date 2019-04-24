@@ -38,11 +38,11 @@
         </a>
         <div id="collapseClienteFornecedor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h5 class="collapse-header">Clientes:</h5>
+                <h7 class="collapse-header">Clientes:</h7>
                 <a class="collapse-item" href="cNovo.html">Novo</a>
                 <a class="collapse-item" href="cEditarRemover.html">Editar / Remover</a>
                 <a class="collapse-item" href="cConsultar.html">Consultar</a>
-                <h5 class="collapse-header">Fornecedores:</h5>
+                <h7 class="collapse-header">Fornecedores:</h7>
                 <a class="collapse-item" href="fNovo.html">Novo</a>
                 <a class="collapse-item" href="fAtualizarRemover.html">Editar / remover</a>
                 <a class="collapse-item" href="fConsultar.html">Consultar</a>
@@ -58,16 +58,16 @@
         </a>
         <div id="collapseEstoque" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h5 class="collapse-header">Produto:</h5>
+                <h6 class="collapse-header">Produto:</h6>
                 <a class="collapse-item" href="<c:url value="/product/productNew"/>">Novo</a>
                 <a class="collapse-item" href="<c:url value="/product/productList"/>">Abrir/Editar/Remover</a>
-                <h5 class="collapse-header">Categoria de Produtos:</h5>
+                <h6 class="collapse-header">Categoria de Produtos:</h6>
                 <a class="collapse-item" href="<c:url value="/product/categoryNew"/>">Nova</a>
                 <a class="collapse-item" href="<c:url value="/product/categoryList"/>">Abrir/Editar/Remover</a>
-                <h5 class="collapse-header">Serviços:</h5>
+                <h6 class="collapse-header">Serviços:</h6>
                 <a class="collapse-item" href="<c:url value="/service/serviceNew"/>">Novo</a>
                 <a class="collapse-item" href="<c:url value="/service/serviceList"/>">Abrir/Editar/Remover</a>
-                <h5 class="collapse-header">Categoria de Serviços:</h5>
+                <h6 class="collapse-header">Categoria de Serviços:</h6>
                 <a class="collapse-item" href="<c:url value="/service/categoryNew"/>">Nova</a>
                 <a class="collapse-item" href="<c:url value="/service/categoryList"/>">Abrir/Editar/Remover</a>
             </div>
@@ -83,11 +83,11 @@
         </a>
         <div id="collapseComercial" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h5 class="collapse-header">Venda:</h5>
+                <h6 class="collapse-header">Venda:</h6>
                 <a class="collapse-item" href="vendaNova.html">Nova</a>
                 <a class="collapse-item" href="vendaEditarCancelar.html">Editar / Cancelar</a>
                 <a class="collapse-item" href="vendaConsultar.html">Consultar</a>
-                <h5 class="collapse-header">Ordem de Serviço:</h5>
+                <h6 class="collapse-header">Ordem de Serviço:</h6>
                 <a class="collapse-item" href="osNova.html">Nova</a>
                 <a class="collapse-item" href="osAtualizarRemover.html">Editar / Remover</a>
                 <a class="collapse-item" href="osConsultar.html">Consultar</a>
@@ -103,15 +103,15 @@
         </a>
         <div id="collapseContabilidade" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h5 class="collapse-header">Funcionários:</h5>
+                <h6 class="collapse-header">Funcionários:</h6>
                 <a class="collapse-item" href="funcionarioNovo.html">Novo</a>
                 <a class="collapse-item" href="funcionarioAtualizarRemover.html">Atualizar / remover</a>
                 <a class="collapse-item" href="funcionarioConsultar.html">Consultar</a>
-                <h5 class="collapse-header">Despesas fixas:</h5>
+                <h6 class="collapse-header">Despesas fixas:</h6>
                 <a class="collapse-item" href="despesasFixasNovo.html">Novo</a>
                 <a class="collapse-item" href="despesasFixasAtualizarRemover.html">Atualizar / remover</a>
                 <a class="collapse-item" href="despesasFixasConsultar.html">Consultar</a>
-                <h5 class="collapse-header">Despesas variáveis:</h5>
+                <h6 class="collapse-header">Despesas variáveis:</h6>
                 <a class="collapse-item" href="despesasVarNovo.html">Novo</a>
                 <a class="collapse-item" href="despesasVarAtualizarRemover.html">Atualizar / remover</a>
                 <a class="collapse-item" href="despesasVarConsultar.html">Consultar</a>

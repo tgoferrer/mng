@@ -4,11 +4,12 @@
     <div class="modal-dialog" role="">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title" ><center><b>Confirme se o produto descrito abaixo deve ser deletado</b></center></h6>
+                <h6 class="modal-title" ><b>Parece que as informações abaixo não são mais necessárias... </b></h6>
             </div>
             <form action="<c:url value="/product/productView/${product.productId}/delete"/>" method="post">
             <div class="modal-body">
-                <p class="text-left"><b>Id:</b> ${product.productId}<br/>
+                <p class="text-left">
+                    <b>Id:</b> ${product.productId}<br/>
                     <b>Identificação do produto:</b> ${product.productName}<br/>
                     <b>Fabricante:</b> ${product.productManufacturer}<br/>
                     <b>Descrição: </b> ${product.productDescription}<br/>
